@@ -12,6 +12,7 @@ def parse(request):
         statement = json.loads(request.body)["statement"]
         pynlpir.open()
         data = pynlpir.segment(statement)
+        pynlpir.close()
         return JsonResponse({
             "success": True,
             "data": data
