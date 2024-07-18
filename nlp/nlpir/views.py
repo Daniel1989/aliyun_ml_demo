@@ -9,7 +9,7 @@ from django.views.decorators.csrf import csrf_exempt
 @csrf_exempt
 def parse(request):
     if request.method == 'POST':
-        statement = json.loads(request.statement)
+        statement = json.loads(request.body)["statement"]
         pynlpir.open()
         data = pynlpir.segment(statement)
         return JsonResponse({
